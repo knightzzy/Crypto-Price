@@ -224,12 +224,12 @@ class EnhancedCryptoMonitor:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
-            since_time = datetime.now() - timedelta(hours=hours)
+            # 使用SQLite的datetime函数进行时间比较
             cursor.execute('''
                 SELECT notification_type, timestamp FROM notification_history
-                WHERE symbol = ? AND timestamp > ?
+                WHERE symbol = ? AND timestamp > datetime('now', '-{} hours')
                 ORDER BY timestamp DESC
-            ''', (symbol, since_time))
+            '''.format(hours), (symbol,))
             
             results = cursor.fetchall()
             conn.close()
@@ -401,7 +401,7 @@ class EnhancedCryptoMonitor:
                 continue
             
             # 检查是否在冷却期内
-            if any(notif['type'] in ['buy', 'sell', 'major_buy', 'major_sell'] 
+            if any(notif['type'] in ['buy_signal', 'sell_signal', 'major_buy', 'major_sell'] 
                    for notif in recent_notifications):
                 continue
             
