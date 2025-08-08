@@ -200,3 +200,16 @@
 2025-08-08 10:37:23,109 - enhanced_crypto_monitor - INFO -   PENDLE: $5.0600 (24h: +26.57%) Vol: $323,092,861
 2025-08-08 10:37:23,111 - enhanced_crypto_monitor - INFO -   CAKE: $2.7600 (24h: +1.70%) Vol: $89,378,610
 2025-08-08 10:37:23,111 - enhanced_crypto_monitor - INFO -   NXPC: $0.9288 (24h: +2.67%) Vol: $17,426,163
+2025-08-08 10:42:23,123 - enhanced_crypto_monitor - ERROR - 配置重新加载失败: cannot import name 'WEBHOOK_URL' from 'config' (D:\AAAScientist\laogao-monitoring\config.py)
+2025-08-08 10:42:23,516 - enhanced_crypto_monitor - INFO - [2025-08-08 10:42:23] 价格更新:
+2025-08-08 10:42:23,517 - enhanced_crypto_monitor - INFO -   RAY: $2.8200 (24h: +5.88%) Vol: $55,042,704
+2025-08-08 10:42:23,517 - enhanced_crypto_monitor - INFO -   CRV: $0.9484 (24h: +2.98%) Vol: $364,192,705
+2025-08-08 10:42:23,517 - enhanced_crypto_monitor - INFO -   PENDLE: $5.0700 (24h: +26.73%) Vol: $324,236,163
+2025-08-08 10:42:23,517 - enhanced_crypto_monitor - INFO -   CAKE: $2.7700 (24h: +2.06%) Vol: $91,046,875
+2025-08-08 10:42:23,519 - enhanced_crypto_monitor - INFO -   NXPC: $0.9294 (24h: +2.97%) Vol: $17,478,478
+2025-08-08 10:47:23,889 - enhanced_crypto_monitor - INFO - [2025-08-08 10:47:23] 价格更新:
+2025-08-08 10:47:23,889 - enhanced_crypto_monitor - INFO -   RAY: $2.8200 (24h: +6.03%) Vol: $55,069,885
+2025-08-08 10:47:23,889 - enhanced_crypto_monitor - INFO -   CRV: $0.9492 (24h: +2.93%) Vol: $364,228,476
+2025-08-08 10:47:23,889 - enhanced_crypto_monitor - INFO -   PENDLE: $5.0700 (24h: +27.01%) Vol: $324,599,292
+2025-08-08 10:47:23,889 - enhanced_crypto_monitor - INFO -   CAKE: $2.7700 (24h: +2.07%) Vol: $91,116,611
+2025-08-08 10:47:23,890 - enhanced_crypto_monitor - INFO -   NXPC: $0.9303 (24h: +3.06%) Vol: $17,567,413

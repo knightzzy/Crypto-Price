@@ -1,0 +1,30 @@
+[Unit]
+Description=Crypto Currency Dashboard Service
+After=network.target crypto-monitor.service
+Wants=network.target
+Requires=crypto-monitor.service
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/laogao-monitoring
+Environment=PATH=/home/ubuntu/laogao-monitoring/venv/bin
+ExecStart=/home/ubuntu/laogao-monitoring/venv/bin/python /home/ubuntu/laogao-monitoring/web_dashboard.py
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=10
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/home/ubuntu/laogao-monitoring
+
+# 日志配置
+StandardOutput=append:/home/ubuntu/laogao-monitoring/logs/dashboard.log
+StandardError=append:/home/ubuntu/laogao-monitoring/logs/dashboard_error.log
+
+[Install]
+WantedBy=multi-user.target

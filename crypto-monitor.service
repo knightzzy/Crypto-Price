@@ -1,0 +1,29 @@
+[Unit]
+Description=Crypto Currency Monitor Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/laogao-monitoring
+Environment=PATH=/home/ubuntu/laogao-monitoring/venv/bin
+ExecStart=/home/ubuntu/laogao-monitoring/venv/bin/python /home/ubuntu/laogao-monitoring/start_monitor.py --mode enhanced
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=10
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/home/ubuntu/laogao-monitoring
+
+# 日志配置
+StandardOutput=append:/home/ubuntu/laogao-monitoring/logs/monitor.log
+StandardError=append:/home/ubuntu/laogao-monitoring/logs/monitor_error.log
+
+[Install]
+WantedBy=multi-user.target

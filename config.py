@@ -8,7 +8,7 @@
 # ==================== 基础配置 ====================
 
 # 企业微信机器人webhook地址
-WECHAT_WEBHOOK = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=46e4e50e-8aa7-4b2f-8983-41800deafa5f"
+WECHAT_WEBHOOK = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key="
 
 # 要监控的币种列表
 MONITOR_SYMBOLS = ["RAY", "CRV", "PENDLE", "CAKE", "NXPC"]
