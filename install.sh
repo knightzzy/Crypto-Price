@@ -94,6 +94,10 @@ success_msg "python3-venv已安装"
 echo "安装系统依赖包..."
 $SUDO_CMD apt install -y build-essential curl wget screen htop || warn_msg "部分系统依赖安装失败，但不影响主要功能"
 
+# 安装TA-Lib系统依赖（用于技术指标计算）
+echo "安装TA-Lib系统依赖..."
+$SUDO_CMD apt install -y libta-lib-dev || warn_msg "TA-Lib系统依赖安装失败，技术指标功能可能不可用"
+
 echo "\n2. 下载项目代码..."
 
 # 如果安装目录已存在，询问是否删除
@@ -137,7 +141,19 @@ pip install --upgrade pip || warn_msg "pip升级失败，继续使用当前版�
 # 安装依赖
 echo "安装Python依赖包..."
 if [ -f "requirements.txt" ]; then
-    pip install -r requirements.txt || error_exit "依赖安装失败"
+    # 先安装基础依赖
+    echo "安装基础依赖包..."
+    pip install requests numpy pandas loguru pyyaml python-dateutil orjson aiohttp matplotlib seaborn || warn_msg "部分基础依赖安装失败，但不影响核心功能"
+    
+    # 尝试安装TA-Lib（可能失败）
+    echo "尝试安装TA-Lib技术指标库..."
+    if pip install TA-Lib>=0.4.0; then
+        success_msg "TA-Lib安装成功"
+    else
+        warn_msg "TA-Lib安装失败，将跳过技术指标功能"
+        warn_msg "如需使用技术指标，请手动安装：sudo apt-get install libta-lib-dev && pip install TA-Lib"
+    fi
+    
     success_msg "依赖安装完成"
 else
     error_exit "requirements.txt文件不存在"
@@ -147,9 +163,17 @@ echo "\n4. 检查配置文件..."
 
 # 检查config.py是否存在
 if [ ! -f "config.py" ]; then
-    error_exit "config.py配置文件不存在，请先配置"
+    warn_msg "config.py配置文件不存在，将创建默认配置"
+    if [ -f "config.py.example" ]; then
+        cp config.py.example config.py
+        success_msg "已从示例文件创建配置文件"
+    else
+        warn_msg "未找到示例配置文件，请手动配置config.py"
+        info_msg "系统将使用默认配置继续安装，请稍后编辑config.py文件"
+    fi
+else
+    success_msg "配置文件存在"
 fi
-success_msg "配置文件存在"
 
 echo "\n5. 设置文件权限..."
 
