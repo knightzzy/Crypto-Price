@@ -1,0 +1,146 @@
+2025-08-08 09:34:23,923 - enhanced_crypto_monitor - INFO - 数据库初始化完成
+2025-08-08 09:34:23,923 - enhanced_crypto_monitor - INFO - 🚀 增强版加密货币价格监控系统启动
+2025-08-08 09:34:23,923 - enhanced_crypto_monitor - INFO - 📊 监控币种: RAY, CRV, PENDLE, CAKE
+2025-08-08 09:34:23,923 - enhanced_crypto_monitor - INFO - ⏱️ 监控间隔: 300秒
+2025-08-08 09:34:23,923 - enhanced_crypto_monitor - INFO - 🗄️ 数据库: crypto_monitor.db
+2025-08-08 09:34:24,235 - enhanced_crypto_monitor - INFO - 通知发送成功 (1/20): 🤖 增强版加密货币监控系统已启动
+📊 监控币种: RAY, CRV, PENDLE, CAKE
+📉 ...
+2025-08-08 09:34:24,567 - enhanced_crypto_monitor - INFO - [2025-08-08 09:34:24] 价格更新:
+2025-08-08 09:34:24,567 - enhanced_crypto_monitor - INFO -   RAY: $2.8300 (24h: +5.52%) Vol: $54,246,696
+2025-08-08 09:34:24,568 - enhanced_crypto_monitor - INFO -   CRV: $0.9529 (24h: +3.25%) Vol: $361,959,522
+2025-08-08 09:34:24,568 - enhanced_crypto_monitor - INFO -   PENDLE: $5.1800 (24h: +28.52%) Vol: $306,521,311
+2025-08-08 09:34:24,568 - enhanced_crypto_monitor - INFO -   CAKE: $2.7700 (24h: +0.47%) Vol: $93,081,374
+2025-08-08 09:34:24,879 - enhanced_crypto_monitor - INFO - 通知发送成功 (2/20): 🚀 PENDLE 获利良机！
+💰 价格: $5.1800
+📈 暴涨: 28.52%
+💸 强烈建议: ...
+2025-08-08 09:38:08,257 - enhanced_crypto_monitor - INFO - 收到停止信号，正在关闭监控系统...
+2025-08-08 09:38:11,291 - enhanced_crypto_monitor - INFO - 数据库初始化完成
+2025-08-08 09:38:11,291 - enhanced_crypto_monitor - INFO - 🚀 增强版加密货币价格监控系统启动
+2025-08-08 09:38:11,291 - enhanced_crypto_monitor - INFO - 📊 监控币种: RAY, CRV, PENDLE, CAKE
+2025-08-08 09:38:11,291 - enhanced_crypto_monitor - INFO - ⏱️ 监控间隔: 300秒
+2025-08-08 09:38:11,291 - enhanced_crypto_monitor - INFO - 🗄️ 数据库: crypto_monitor.db
+2025-08-08 09:38:11,652 - enhanced_crypto_monitor - INFO - 通知发送成功 (1/20): 🤖 增强版加密货币监控系统已启动
+📊 监控币种: RAY, CRV, PENDLE, CAKE
+📉 ...
+2025-08-08 09:38:12,008 - enhanced_crypto_monitor - INFO - [2025-08-08 09:38:12] 价格更新:
+2025-08-08 09:38:12,008 - enhanced_crypto_monitor - INFO -   RAY: $2.8200 (24h: +5.47%) Vol: $54,134,792
+2025-08-08 09:38:12,008 - enhanced_crypto_monitor - INFO -   CRV: $0.9518 (24h: +2.86%) Vol: $360,954,031
+2025-08-08 09:38:12,008 - enhanced_crypto_monitor - INFO -   PENDLE: $5.1600 (24h: +28.20%) Vol: $307,263,509
+2025-08-08 09:38:12,008 - enhanced_crypto_monitor - INFO -   CAKE: $2.7600 (24h: +0.49%) Vol: $91,206,744
+2025-08-08 09:38:12,334 - enhanced_crypto_monitor - INFO - 通知发送成功 (2/20): 🚀 PENDLE 获利良机！
+💰 价格: $5.1600
+📈 暴涨: 28.20%
+💸 强烈建议: ...
+2025-08-08 09:40:29,483 - enhanced_crypto_monitor - INFO - 收到停止信号，正在关闭监控系统...
+2025-08-08 09:40:30,779 - enhanced_crypto_monitor - INFO - 数据库初始化完成
+2025-08-08 09:40:30,780 - enhanced_crypto_monitor - INFO - 🚀 增强版加密货币价格监控系统启动
+2025-08-08 09:40:30,780 - enhanced_crypto_monitor - INFO - 📊 监控币种: RAY, CRV, PENDLE, CAKE, BLUE, NXPC
+2025-08-08 09:40:30,780 - enhanced_crypto_monitor - INFO - ⏱️ 监控间隔: 300秒
+2025-08-08 09:40:30,781 - enhanced_crypto_monitor - INFO - 🗄️ 数据库: crypto_monitor.db
+2025-08-08 09:40:31,082 - enhanced_crypto_monitor - INFO - 通知发送成功 (1/20): 🤖 增强版加密货币监控系统已启动
+📊 监控币种: RAY, CRV, PENDLE, CAKE, B...
+2025-08-08 09:40:31,384 - enhanced_crypto_monitor - INFO - [2025-08-08 09:40:31] 价格更新:
+2025-08-08 09:40:31,386 - enhanced_crypto_monitor - INFO -   RAY: $2.8200 (24h: +5.42%) Vol: $55,073,596
+2025-08-08 09:40:31,386 - enhanced_crypto_monitor - INFO -   CRV: $0.9525 (24h: +2.93%) Vol: $361,151,100
+2025-08-08 09:40:31,386 - enhanced_crypto_monitor - INFO -   PENDLE: $5.1700 (24h: +28.55%) Vol: $307,760,288
+2025-08-08 09:40:31,386 - enhanced_crypto_monitor - INFO -   CAKE: $2.7600 (24h: +0.43%) Vol: $91,074,438
+2025-08-08 09:40:31,706 - enhanced_crypto_monitor - INFO - 通知发送成功 (2/20): 🚀 PENDLE 获利良机！
+💰 价格: $5.1700
+📈 暴涨: 28.55%
+💸 强烈建议: ...
+2025-08-08 09:45:33,050 - enhanced_crypto_monitor - INFO - [2025-08-08 09:45:33] 价格更新:
+2025-08-08 09:45:33,051 - enhanced_crypto_monitor - INFO -   RAY: $2.8200 (24h: +5.27%) Vol: $53,842,495
+2025-08-08 09:45:33,051 - enhanced_crypto_monitor - INFO -   CRV: $0.9526 (24h: +3.15%) Vol: $361,593,999
+2025-08-08 09:45:33,051 - enhanced_crypto_monitor - INFO -   PENDLE: $5.1600 (24h: +28.58%) Vol: $308,444,245
+2025-08-08 09:45:33,052 - enhanced_crypto_monitor - INFO -   CAKE: $2.7600 (24h: +0.76%) Vol: $90,470,899
+2025-08-08 09:45:33,352 - enhanced_crypto_monitor - INFO - 通知发送成功 (3/20): 🚀 PENDLE 获利良机！
+💰 价格: $5.1600
+📈 暴涨: 28.58%
+💸 强烈建议: ...
+2025-08-08 09:46:08,978 - enhanced_crypto_monitor - INFO - 数据库初始化完成
+2025-08-08 09:47:06,736 - enhanced_crypto_monitor - INFO - 数据库初始化完成
+2025-08-08 09:50:34,359 - enhanced_crypto_monitor - ERROR - 配置重新加载失败: cannot import name 'WEBHOOK_URL' from 'config' (D:\AAAScientist\laogao-monitoring\config.py)
+2025-08-08 09:50:34,750 - enhanced_crypto_monitor - INFO - [2025-08-08 09:50:34] 价格更新:
+2025-08-08 09:50:34,751 - enhanced_crypto_monitor - INFO -   RAY: $2.8200 (24h: +5.30%) Vol: $55,118,148
+2025-08-08 09:50:34,751 - enhanced_crypto_monitor - INFO -   CRV: $0.9506 (24h: +2.93%) Vol: $363,021,324
+2025-08-08 09:50:34,752 - enhanced_crypto_monitor - INFO -   PENDLE: $5.1400 (24h: +27.95%) Vol: $311,304,348
+2025-08-08 09:50:34,752 - enhanced_crypto_monitor - INFO -   CAKE: $2.7600 (24h: +0.80%) Vol: $90,341,520
+2025-08-08 09:50:35,072 - enhanced_crypto_monitor - INFO - 通知发送成功 (4/20): 🚀 PENDLE 获利良机！
+💰 价格: $5.1400
+📈 暴涨: 27.95%
+💸 强烈建议: ...
+2025-08-08 09:55:36,083 - enhanced_crypto_monitor - ERROR - 配置重新加载失败: cannot import name 'WEBHOOK_URL' from 'config' (D:\AAAScientist\laogao-monitoring\config.py)
+2025-08-08 09:55:36,404 - enhanced_crypto_monitor - INFO - [2025-08-08 09:55:36] 价格更新:
+2025-08-08 09:55:36,404 - enhanced_crypto_monitor - INFO -   RAY: $2.8200 (24h: +5.47%) Vol: $55,618,499
+2025-08-08 09:55:36,404 - enhanced_crypto_monitor - INFO -   CRV: $0.9493 (24h: +3.09%) Vol: $359,896,909
+2025-08-08 09:55:36,404 - enhanced_crypto_monitor - INFO -   PENDLE: $5.1100 (24h: +27.57%) Vol: $313,812,331
+2025-08-08 09:55:36,404 - enhanced_crypto_monitor - INFO -   CAKE: $2.7600 (24h: +1.13%) Vol: $89,402,704
+2025-08-08 09:55:37,017 - enhanced_crypto_monitor - INFO - 通知发送成功 (5/20): 🚀 PENDLE 获利良机！
+💰 价格: $5.1100
+📈 暴涨: 27.57%
+💸 强烈建议: ...
+2025-08-08 10:00:38,440 - enhanced_crypto_monitor - INFO - [2025-08-08 10:00:38] 价格更新:
+2025-08-08 10:00:38,440 - enhanced_crypto_monitor - INFO -   RAY: $2.8300 (24h: +5.69%) Vol: $55,393,835
+2025-08-08 10:00:38,440 - enhanced_crypto_monitor - INFO -   CRV: $0.9488 (24h: +3.25%) Vol: $359,409,585
+2025-08-08 10:00:38,442 - enhanced_crypto_monitor - INFO -   PENDLE: $5.1000 (24h: +27.26%) Vol: $313,448,669
+2025-08-08 10:00:38,442 - enhanced_crypto_monitor - INFO -   CAKE: $2.7600 (24h: +1.15%) Vol: $87,813,980
+2025-08-08 10:00:38,782 - enhanced_crypto_monitor - INFO - 通知发送成功 (6/20): 🚀 PENDLE 获利良机！
+💰 价格: $5.1000
+📈 暴涨: 27.26%
+💸 强烈建议: ...
+2025-08-08 10:03:45,008 - enhanced_crypto_monitor - INFO - 数据库初始化完成
+2025-08-08 10:03:45,010 - enhanced_crypto_monitor - INFO - 🚀 增强版加密货币价格监控系统启动
+2025-08-08 10:03:45,010 - enhanced_crypto_monitor - INFO - 📊 监控币种: RAY, CRV, PENDLE, CAKE, BLUE, NXPC
+2025-08-08 10:03:45,010 - enhanced_crypto_monitor - INFO - ⏱️ 监控间隔: 300秒
+2025-08-08 10:03:45,010 - enhanced_crypto_monitor - INFO - 🗄️ 数据库: crypto_monitor.db
+2025-08-08 10:03:45,320 - enhanced_crypto_monitor - INFO - 通知发送成功 (1/20): 🤖 增强版加密货币监控系统已启动
+📊 监控币种: RAY, CRV, PENDLE, CAKE, B...
+2025-08-08 10:03:45,633 - enhanced_crypto_monitor - INFO - [2025-08-08 10:03:45] 价格更新:
+2025-08-08 10:03:45,633 - enhanced_crypto_monitor - INFO -   RAY: $2.8300 (24h: +6.31%) Vol: $54,868,321
+2025-08-08 10:03:45,633 - enhanced_crypto_monitor - INFO -   CRV: $0.9485 (24h: +3.23%) Vol: $360,258,308
+2025-08-08 10:03:45,633 - enhanced_crypto_monitor - INFO -   PENDLE: $5.0900 (24h: +27.19%) Vol: $314,969,527
+2025-08-08 10:03:45,633 - enhanced_crypto_monitor - INFO -   CAKE: $2.7600 (24h: +1.39%) Vol: $87,624,303
+2025-08-08 10:03:45,633 - enhanced_crypto_monitor - INFO -   NXPC: $0.9299 (24h: +2.82%) Vol: $17,474,428
+2025-08-08 10:03:45,929 - enhanced_crypto_monitor - INFO - 通知发送成功 (2/20): 🚀 PENDLE 获利良机！
+💰 价格: $5.0900
+📈 暴涨: 27.19%
+💸 强烈建议: ...
+2025-08-08 10:07:46,751 - enhanced_crypto_monitor - INFO - 数据库初始化完成
+2025-08-08 10:07:46,751 - enhanced_crypto_monitor - INFO - 🚀 增强版加密货币价格监控系统启动
+2025-08-08 10:07:46,751 - enhanced_crypto_monitor - INFO - 📊 监控币种: RAY, CRV, PENDLE, CAKE, NXPC
+2025-08-08 10:07:46,751 - enhanced_crypto_monitor - INFO - ⏱️ 监控间隔: 300秒
+2025-08-08 10:07:46,751 - enhanced_crypto_monitor - INFO - 🗄️ 数据库: crypto_monitor.db
+2025-08-08 10:07:47,052 - enhanced_crypto_monitor - INFO - 通知发送成功 (1/20): 🤖 增强版加密货币监控系统已启动
+📊 监控币种: RAY, CRV, PENDLE, CAKE, N...
+2025-08-08 10:07:47,384 - enhanced_crypto_monitor - INFO - [2025-08-08 10:07:47] 价格更新:
+2025-08-08 10:07:47,384 - enhanced_crypto_monitor - INFO -   RAY: $2.8300 (24h: +6.27%) Vol: $55,210,948
+2025-08-08 10:07:47,384 - enhanced_crypto_monitor - INFO -   CRV: $0.9475 (24h: +2.62%) Vol: $360,958,523
+2025-08-08 10:07:47,384 - enhanced_crypto_monitor - INFO -   PENDLE: $5.0900 (24h: +26.90%) Vol: $314,931,881
+2025-08-08 10:07:47,384 - enhanced_crypto_monitor - INFO -   CAKE: $2.7600 (24h: +1.37%) Vol: $87,443,670
+2025-08-08 10:07:47,384 - enhanced_crypto_monitor - INFO -   NXPC: $0.9297 (24h: +2.79%) Vol: $17,445,633
+2025-08-08 10:07:47,702 - enhanced_crypto_monitor - INFO - 通知发送成功 (2/20): 🚀 PENDLE 获利良机！
+💰 价格: $5.0900
+📈 暴涨: 26.90%
+💸 强烈建议: ...
+2025-08-08 10:12:49,074 - enhanced_crypto_monitor - INFO - [2025-08-08 10:12:49] 价格更新:
+2025-08-08 10:12:49,074 - enhanced_crypto_monitor - INFO -   RAY: $2.8300 (24h: +6.25%) Vol: $55,237,951
+2025-08-08 10:12:49,074 - enhanced_crypto_monitor - INFO -   CRV: $0.9471 (24h: +2.46%) Vol: $362,935,949
+2025-08-08 10:12:49,079 - enhanced_crypto_monitor - INFO -   PENDLE: $5.0800 (24h: +26.71%) Vol: $315,435,150
+2025-08-08 10:12:49,079 - enhanced_crypto_monitor - INFO -   CAKE: $2.7600 (24h: +1.41%) Vol: $87,993,959
+2025-08-08 10:12:49,079 - enhanced_crypto_monitor - INFO -   NXPC: $0.9299 (24h: +2.51%) Vol: $17,431,432
+2025-08-08 10:12:49,403 - enhanced_crypto_monitor - INFO - 通知发送成功 (3/20): 🚀 PENDLE 获利良机！
+💰 价格: $5.0800
+📈 暴涨: 26.71%
+💸 强烈建议: ...
+2025-08-08 10:17:50,725 - enhanced_crypto_monitor - INFO - [2025-08-08 10:17:50] 价格更新:
+2025-08-08 10:17:50,725 - enhanced_crypto_monitor - INFO -   RAY: $2.8300 (24h: +6.07%) Vol: $55,195,691
+2025-08-08 10:17:50,725 - enhanced_crypto_monitor - INFO -   CRV: $0.9482 (24h: +2.33%) Vol: $363,035,440
+2025-08-08 10:17:50,725 - enhanced_crypto_monitor - INFO -   PENDLE: $5.0700 (24h: +26.54%) Vol: $316,059,043
+2025-08-08 10:17:50,725 - enhanced_crypto_monitor - INFO -   CAKE: $2.7600 (24h: +1.22%) Vol: $87,837,923
+2025-08-08 10:17:50,741 - enhanced_crypto_monitor - INFO -   NXPC: $0.9299 (24h: +2.50%) Vol: $17,292,453
+2025-08-08 10:17:51,038 - enhanced_crypto_monitor - INFO - 通知发送成功 (4/20): 🚀 PENDLE 获利良机！
+💰 价格: $5.0700
+📈 暴涨: 26.54%
+💸 强烈建议: ...
