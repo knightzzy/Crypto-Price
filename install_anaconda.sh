@@ -1,40 +1,21 @@
 #!/bin/bash
 
-# 加密货币监控系统安装脚本
+# 加密货币监控系统安装脚本 - Anaconda环境优化版
 # 作者: 量化开发专家
-# 功能: 一键安装加密货币价格监控系统
-# 适用: Ubuntu 18.04+ 服务器环境
+# 功能: 针对已安装Anaconda3的Ubuntu服务器优化部署
+# 适用: Ubuntu 18.04+ 服务器环境 + Anaconda3
 
 set -e  # 遇到错误立即退出
 
-echo "=== 加密货币监控系统安装脚本 ==="
+echo "=== 加密货币监控系统安装脚本 (Anaconda优化版) ==="
 echo "开始时间: $(date)"
 echo "系统信息: $(lsb_release -d | cut -f2)"
-
-# 检查是否安装了Anaconda
-if command -v conda &> /dev/null; then
-    echo -e "\033[1;33m检测到Anaconda环境！\033[0m"
-    echo -e "\033[1;32m推荐使用Anaconda专用安装脚本，具有更好的包管理和环境隔离：\033[0m"
-    echo "  wget https://raw.githubusercontent.com/knightzzy/Crypto-Price/master/install_anaconda.sh"
-    echo "  chmod +x install_anaconda.sh"
-    echo "  ./install_anaconda.sh"
-    echo ""
-    echo "或者直接运行："
-    echo "  curl -sSL https://raw.githubusercontent.com/knightzzy/Crypto-Price/master/install_anaconda.sh | bash"
-    echo ""
-    echo -e "\033[1;33m是否继续使用当前脚本安装？(y/n)\033[0m"
-    read -r response
-    if [[ ! "$response" =~ ^[Yy]$ ]]; then
-        echo "安装取消，请使用Anaconda专用脚本"
-        exit 0
-    fi
-    echo "继续使用当前脚本安装..."
-fi
 
 # 配置变量
 REPO_URL="https://github.com/knightzzy/Crypto-Price.git"
 PROJECT_NAME="Crypto-Price"
 INSTALL_DIR="$HOME/crypto-monitor"
+CONDA_ENV_NAME="crypto_monitor"
 
 # 颜色定义
 RED='\033[0;31m'
@@ -65,7 +46,13 @@ info_msg() {
     echo -e "${BLUE}ℹ $1${NC}"
 }
 
-echo "1. 检查和安装系统环境..."
+echo "1. 检查Anaconda环境..."
+
+# 检查conda是否可用
+if ! command -v conda &> /dev/null; then
+    error_exit "未找到conda命令，请确保Anaconda3已正确安装并添加到PATH"
+fi
+success_msg "Anaconda3已安装 ($(conda --version))"
 
 # 检查是否为root用户或有sudo权限
 if [[ $EUID -eq 0 ]]; then
@@ -75,48 +62,45 @@ elif sudo -n true 2>/dev/null; then
     SUDO_CMD="sudo"
     success_msg "检测到sudo权限"
 else
-    error_exit "需要root权限或sudo权限来安装系统依赖"
+    warn_msg "没有sudo权限，将跳过系统依赖安装"
+    SUDO_CMD=""
 fi
 
-# 更新系统包列表
-echo "更新系统包列表..."
-$SUDO_CMD apt update || error_exit "无法更新系统包列表"
+# 更新系统包列表（如果有sudo权限）
+if [ -n "$SUDO_CMD" ]; then
+    echo "更新系统包列表..."
+    $SUDO_CMD apt update || warn_msg "系统包列表更新失败"
+fi
 
 # 检查并安装git
 if ! command -v git &> /dev/null; then
-    echo "安装Git..."
-    $SUDO_CMD apt install -y git || error_exit "Git安装失败"
+    if [ -n "$SUDO_CMD" ]; then
+        echo "安装Git..."
+        $SUDO_CMD apt install -y git || error_exit "Git安装失败"
+    else
+        error_exit "Git未安装且无sudo权限安装"
+    fi
 fi
 success_msg "Git已安装 ($(git --version))"
 
-# 检查并安装python3
-if ! command -v python3 &> /dev/null; then
-    echo "安装Python3..."
-    $SUDO_CMD apt install -y python3 python3-dev || error_exit "Python3安装失败"
+# 安装系统依赖（如果有sudo权限）
+if [ -n "$SUDO_CMD" ]; then
+    echo "安装系统依赖包..."
+    # 尝试不同的TA-Lib包名
+    $SUDO_CMD apt install -y build-essential curl wget screen htop || warn_msg "部分系统依赖安装失败"
+    
+    # 尝试安装TA-Lib系统依赖（多种包名）
+    echo "尝试安装TA-Lib系统依赖..."
+    if $SUDO_CMD apt install -y libta-lib-dev; then
+        success_msg "libta-lib-dev安装成功"
+    elif $SUDO_CMD apt install -y ta-lib; then
+        success_msg "ta-lib安装成功"
+    else
+        warn_msg "TA-Lib系统依赖安装失败，将使用conda安装"
+    fi
+else
+    warn_msg "跳过系统依赖安装（无sudo权限）"
 fi
-success_msg "Python3已安装 ($(python3 --version))"
-
-# 检查并安装pip3
-if ! command -v pip3 &> /dev/null; then
-    echo "安装pip3..."
-    $SUDO_CMD apt install -y python3-pip || error_exit "pip3安装失败"
-fi
-success_msg "pip3已安装 ($(pip3 --version))"
-
-# 安装python3-venv
-if ! python3 -m venv --help &> /dev/null; then
-    echo "安装python3-venv..."
-    $SUDO_CMD apt install -y python3-venv || error_exit "python3-venv安装失败"
-fi
-success_msg "python3-venv已安装"
-
-# 安装其他必要的系统依赖
-echo "安装系统依赖包..."
-$SUDO_CMD apt install -y build-essential curl wget screen htop || warn_msg "部分系统依赖安装失败，但不影响主要功能"
-
-# 安装TA-Lib系统依赖（用于技术指标计算）
-echo "安装TA-Lib系统依赖..."
-$SUDO_CMD apt install -y libta-lib-dev || warn_msg "TA-Lib系统依赖安装失败，技术指标功能可能不可用"
 
 echo "\n2. 下载项目代码..."
 
@@ -142,44 +126,62 @@ success_msg "项目克隆成功"
 cd "$INSTALL_DIR" || error_exit "无法进入项目目录"
 info_msg "当前目录: $(pwd)"
 
-echo "\n3. 设置Python环境..."
+echo "\n3. 设置Conda环境..."
 
-# 创建虚拟环境
-echo "创建Python虚拟环境..."
-python3 -m venv venv || error_exit "无法创建虚拟环境"
-success_msg "虚拟环境创建成功"
+# 初始化conda（确保在脚本中可用）
+eval "$(conda shell.bash hook)"
 
-# 激活虚拟环境
-echo "激活虚拟环境..."
-source venv/bin/activate || error_exit "无法激活虚拟环境"
-success_msg "虚拟环境已激活"
-
-# 升级pip到最新版本
-echo "升级pip到最新版本..."
-pip install --upgrade pip || warn_msg "pip升级失败，继续使用当前版本"
-
-# 安装依赖
-echo "安装Python依赖包..."
-if [ -f "requirements.txt" ]; then
-    # 先安装基础依赖
-    echo "安装基础依赖包..."
-    pip install requests numpy pandas loguru pyyaml python-dateutil orjson aiohttp matplotlib seaborn || warn_msg "部分基础依赖安装失败，但不影响核心功能"
-    
-    # 尝试安装TA-Lib（可能失败）
-    echo "尝试安装TA-Lib技术指标库..."
-    if pip install TA-Lib>=0.4.0; then
-        success_msg "TA-Lib安装成功"
+# 检查环境是否已存在
+if conda env list | grep -q "$CONDA_ENV_NAME"; then
+    warn_msg "Conda环境 $CONDA_ENV_NAME 已存在"
+    echo "是否删除现有环境并重新创建? (y/n)"
+    read -r response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+        conda env remove -n "$CONDA_ENV_NAME" -y
+        success_msg "已删除现有环境"
     else
-        warn_msg "TA-Lib安装失败，将跳过技术指标功能"
-        warn_msg "如需使用技术指标，请手动安装：sudo apt-get install libta-lib-dev && pip install TA-Lib"
+        info_msg "使用现有环境"
     fi
-    
-    success_msg "依赖安装完成"
-else
-    error_exit "requirements.txt文件不存在"
 fi
 
-echo "\n4. 检查配置文件..."
+# 创建conda环境
+if ! conda env list | grep -q "$CONDA_ENV_NAME"; then
+    echo "创建Conda环境..."
+    conda create -n "$CONDA_ENV_NAME" python=3.9 -y || error_exit "无法创建Conda环境"
+    success_msg "Conda环境创建成功"
+fi
+
+# 激活conda环境
+echo "激活Conda环境..."
+conda activate "$CONDA_ENV_NAME" || error_exit "无法激活Conda环境"
+success_msg "Conda环境已激活"
+
+echo "\n4. 安装Python依赖..."
+
+# 升级pip
+echo "升级pip..."
+pip install --upgrade pip || warn_msg "pip升级失败，继续使用当前版本"
+
+# 使用conda安装科学计算包（更稳定）
+echo "使用conda安装科学计算包..."
+conda install -y numpy pandas matplotlib seaborn || warn_msg "部分conda包安装失败"
+
+# 使用pip安装其他依赖
+echo "安装其他Python依赖..."
+pip install requests loguru pyyaml python-dateutil orjson aiohttp || warn_msg "部分pip包安装失败"
+
+# 尝试安装TA-Lib（多种方式）
+echo "尝试安装TA-Lib技术指标库..."
+if conda install -y -c conda-forge ta-lib; then
+    success_msg "TA-Lib通过conda安装成功"
+elif pip install TA-Lib; then
+    success_msg "TA-Lib通过pip安装成功"
+else
+    warn_msg "TA-Lib安装失败，技术指标功能将不可用"
+    warn_msg "可以稍后手动安装：conda install -c conda-forge ta-lib"
+fi
+
+echo "\n5. 检查配置文件..."
 
 # 检查config.py是否存在
 if [ ! -f "config.py" ]; then
@@ -195,14 +197,14 @@ else
     success_msg "配置文件存在"
 fi
 
-echo "\n5. 设置文件权限..."
+echo "\n6. 设置文件权限..."
 
 # 设置脚本执行权限
 chmod +x *.py 2>/dev/null || true
 chmod +x *.sh 2>/dev/null || true
 success_msg "文件权限设置完成"
 
-echo "\n6. 启动服务..."
+echo "\n7. 启动服务..."
 
 # 创建必要的目录
 mkdir -p logs
@@ -252,20 +254,12 @@ if command -v netstat &> /dev/null; then
     fi
 fi
 
-echo "\n7. 安装完成检查..."
-
-# 检查数据库文件
-if [ -f "crypto_monitor.db" ]; then
-    success_msg "数据库文件存在"
-else
-    info_msg "数据库文件将在首次运行时创建"
-fi
-
 # 获取服务器外网IP
 SERVER_IP=$(curl -s ifconfig.me 2>/dev/null || curl -s ipinfo.io/ip 2>/dev/null || echo "YOUR_SERVER_IP")
 
 # 显示安装结果
-echo "\n=== 安装完成 ==="
+echo "\n=== Anaconda环境安装完成 ==="
+echo -e "${GREEN}Conda环境: $CONDA_ENV_NAME${NC}"
 echo -e "${GREEN}监控服务PID: $MONITOR_PID${NC}"
 echo -e "${GREEN}Web Dashboard PID: $DASHBOARD_PID${NC}"
 echo -e "${BLUE}安装目录: $INSTALL_DIR${NC}"
@@ -277,34 +271,35 @@ echo "  - 监控服务: $INSTALL_DIR/logs/monitor.log"
 echo "  - Web Dashboard: $INSTALL_DIR/logs/dashboard.log"
 echo "\n常用管理命令:"
 echo "  进入项目目录: cd $INSTALL_DIR"
-echo "  激活虚拟环境: source venv/bin/activate"
+echo "  激活Conda环境: conda activate $CONDA_ENV_NAME"
 echo "  查看监控日志: tail -f logs/monitor.log"
 echo "  查看Dashboard日志: tail -f logs/dashboard.log"
 echo "  实时监控日志: tail -f logs/monitor.log | grep -E '(买入|卖出|获利|止损)'"
 echo "  停止监控服务: kill \$(cat monitor.pid)"
 echo "  停止Dashboard: kill \$(cat dashboard.pid)"
-echo "  重新部署: ./deploy.sh"
+echo "  重新部署: conda activate $CONDA_ENV_NAME && ./deploy.sh"
 echo "  健康检查: ./health_check.sh"
 echo "  查看进程状态: ps aux | grep -E '(start_monitor|web_dashboard)'"
+echo "\n环境管理:"
+echo "  查看conda环境: conda env list"
+echo "  激活环境: conda activate $CONDA_ENV_NAME"
+echo "  停用环境: conda deactivate"
+echo "  删除环境: conda env remove -n $CONDA_ENV_NAME"
+echo "  导出环境: conda env export -n $CONDA_ENV_NAME > environment.yml"
 echo "\n防火墙配置 (如需要):"
 echo "  开放8080端口: sudo ufw allow 8080"
 echo "  查看防火墙状态: sudo ufw status"
 echo "\nScreen会话管理 (推荐用于长期运行):"
 echo "  创建监控会话: screen -S crypto_monitor"
-echo "  在screen中运行: cd $INSTALL_DIR && source venv/bin/activate"
+echo "  在screen中运行: cd $INSTALL_DIR && conda activate $CONDA_ENV_NAME"
 echo "  分离会话: Ctrl+A, D"
 echo "  重新连接: screen -r crypto_monitor"
 echo "  查看所有会话: screen -ls"
-echo "\nSystemd服务配置 (可选):"
-echo "  1. 编辑服务文件: sudo nano crypto-monitor.service"
-echo "  2. 修改路径为: $INSTALL_DIR"
-echo "  3. 复制服务文件: sudo cp crypto-*.service /etc/systemd/system/"
-echo "  4. 启用服务: sudo systemctl enable crypto-monitor crypto-dashboard"
-echo "  5. 启动服务: sudo systemctl start crypto-monitor crypto-dashboard"
 echo "\n更新代码:"
-echo "  cd $INSTALL_DIR && git pull origin master && ./deploy.sh"
+echo "  cd $INSTALL_DIR && git pull origin master && conda activate $CONDA_ENV_NAME && ./deploy.sh"
 
-echo -e "\n${GREEN}🎉 安装成功完成！${NC}"
+echo -e "\n${GREEN}🎉 Anaconda环境安装成功完成！${NC}"
 echo "结束时间: $(date)"
-echo -e "${YELLOW}提示: 建议使用screen或systemd来管理长期运行的服务${NC}"
+echo -e "${YELLOW}提示: 建议使用conda环境管理和screen来管理长期运行的服务${NC}"
 echo -e "${BLUE}如需帮助，请查看: $INSTALL_DIR/UBUNTU_DEPLOY.md${NC}"
+echo -e "${BLUE}Anaconda用户专用指南: $INSTALL_DIR/ANACONDA_GUIDE.md${NC}"
